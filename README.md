@@ -48,3 +48,15 @@ gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family 
  ```shell script
  gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --target-tags puma-server
 ```
+
+
+# ДЗ-5 "Сборка образов VM при помощи Packer"
+
+Реализованно создание образов ВМ с использованием Packer.
+
+Добавленно
+ - Packer template ubuntu16.json для создания reddit-base образа с MongoDB и Ruby.
+ - Packer template immutable.json для создания reddit-full образа (на основе base) c puma-server.
+ - puma.service для systemd.
+ - create-reddit-vm.sh для деплоя reddit-full образа с использованием gcloud.
+ - Параметризация темплейтов.
