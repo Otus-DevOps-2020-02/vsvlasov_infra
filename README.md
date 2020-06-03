@@ -54,7 +54,7 @@ gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family 
 
 Реализованно создание образов ВМ с использованием Packer.
 
-Добавленно
+Добавлено
  - Packer template ubuntu16.json для создания reddit-base образа с MongoDB и Ruby.
  - Packer template immutable.json для создания reddit-full образа (на основе base) c puma-server.
  - puma.service для systemd.
@@ -66,7 +66,7 @@ gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family 
 
 Реализован деплой puma-server с использованием Terraform.
 
-Добавленно:
+Добавлено:
  - Конфиг Terraform для деплоя puma-server
  - input переменные с дефольными значениями в terraform.tfvars
  - Добавление project wide SSH ключей
@@ -81,3 +81,17 @@ gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family 
   - При Count > 2 файл конфигурации сильно разрастается
   - Трудно вносить изменения (к примеру при добавлении нового параметра),
    нужно добавлять в каждый инстанс вручную
+
+# ДЗ-7 "Принципы организации инфраструктурного кода и работа над инфраструктурой в команде на примере Terraform."
+
+Реализован деплой приложения с отдельными инстансами под MongoDB и APP с использованием Terraform
+
+Добавлено:
+  - App, DB, VPC Terraform модули
+  - Prod и Stage конфиги
+  - Внешний модуль storage-bucket для удаленного хранения Terraform state
+  - puma.service.tmpl для передачи DATABASE_URL в App
+  - Переменная enable_provisioning для включения/отключения provisioning
+
+Notes:
+  - При одновременном запуске деплоя конфигураций происходит блокировка стейта

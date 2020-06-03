@@ -3,3 +3,4 @@ disk_image = "reddit-base"
 public_key_path = "~/.ssh/appuser.pub"
 private_key_path = "~/.ssh/appuser"
 instance_count   = 1
+allowed_ips = ["1.1.1.1/32"]

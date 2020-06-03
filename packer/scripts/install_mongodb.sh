@@ -8,6 +8,8 @@ bash -c 'echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 mul
 apt update
 apt install -y mongodb-org
 
+sed -i 's/bindIp: 127.0.0.1/bindIp: 0.0.0.0/g' /etc/mongod.conf
+
 # Run Mongo
 systemctl start mongod
 systemctl enable mongod
