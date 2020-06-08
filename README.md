@@ -95,3 +95,37 @@ gcloud compute instances create reddit-app --boot-disk-size=10GB --image-family 
 
 Notes:
   - При одновременном запуске деплоя конфигураций происходит блокировка стейта
+
+# ДЗ-8 "Управление конфигурацией. Основные DevOps инструменты. Знакомство с Ansible"
+Добавлен Ansible для работы с reddit-app.
+Добавлен простой Ansible playbook для клонирования репозитория reddit-app.
+Добавлен inventory.py для получения списка инстансов с gcp с использованием gcloud и генерации json "на лету"
+
+Описание inventory.py:
+1. Получение GCE с использованием gcloud клиента
+2. Фильтрация GCE по тэгу 'reddit-app'
+3. Фильтрация GCE по тэгу 'reddit-db'
+4. Генерация json
+5. Print json в stdout
+
+Опционально можно получить inventory.json:
+
+`ansible-inventory --list > inventory.json`
+
+Для пинга с использованием Ansible для db & app инстансов:
+
+`ansible all -m ping`
+
+
+Результат запуска Ansible-плэйбука при склонированном репозитории
+```
+PLAY RECAP **********************************************************************************************
+appserver                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+После удаления:
+```
+PLAY RECAP **********************************************************************************************
+appserver                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+В первом случае Ansible не клонирует репозиторий заново.
+Во втором случае `changed=1`, Ansible склонировал репозиторий заново.
