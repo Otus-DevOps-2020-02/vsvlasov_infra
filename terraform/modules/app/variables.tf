@@ -26,5 +26,5 @@ variable "db_url" {
 
 variable "enable_provisioning" {
   description = "Flag to enable/disable provisioning"
-  default     = true
+  default     = false
 }

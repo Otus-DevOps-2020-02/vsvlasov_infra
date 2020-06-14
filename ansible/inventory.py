@@ -14,7 +14,7 @@ def get_gce():
         "compute",
         "instances",
         "list",
-        "--format=value(name,tags.items,networkInterfaces[0].accessConfigs[0].natIP)",
+        "--format=value(name,tags.items,EXTERNAL_IP,INTERNAL_IP)",
     ],
         stdout=subprocess.PIPE
     )
@@ -36,7 +36,10 @@ def get_db_data(gce):
 
 
 def gen_meta(data):
-    return {i[0]: {'ansible_host': i[2]} for i in data}
+    return {
+        i[0]: {'ansible_host': i[2], 'internal_ip': i[3]}
+        for i in data
+    }
 
 
 def make_inventory():

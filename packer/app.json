@@ -3,7 +3,6 @@
     "project_id": null,
     "source_image_family": null,
     "machine_type": "f1-micro",
-
     "network": "default",
     "disk_size": "10",
     "disk_type": "pd-standard",
@@ -30,9 +29,8 @@
   ],
   "provisioners": [
     {
-      "type": "shell",
-      "script": "scripts/install_ruby.sh",
-      "execute_command": "sudo {{.Path}}"
+      "type": "ansible",
+      "playbook_file": "ansible/packer_app.yml"
     }
   ]
 }

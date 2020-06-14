@@ -129,3 +129,16 @@ appserver                  : ok=2    changed=1    unreachable=0    failed=0    s
 ```
 В первом случае Ansible не клонирует репозиторий заново.
 Во втором случае `changed=1`, Ansible склонировал репозиторий заново.
+
+# ДЗ-9 "Деплой и управление конфигурацией с Ansible"
+Добавлен деплой с использованием одного Ansible playbook с одним play (reddit_app_one_play.yml).
+
+Добавлен деплой с использованием одного Ansible playbook с раздельными plays (reddit_app_multiple_plays.yml).
+
+Добавлен деплой с использованием раздельных playbooks для app, db, deploy
+
+Добавлен site.yml playbook для деплоя приложения
+
+Добавлен Ansible provisioning для Packer
+
+Обновлен inventory.py, добавлен internal ip

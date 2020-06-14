@@ -1,0 +1,16 @@
+- name: Prepare app instance image
+  hosts: all
+  become: true
+  tasks:
+    - name: Apt update
+      apt: update_cache=yes
+
+    - name: Install Ruby
+      apt: name={{ item }} state=present
+      with_items:
+        - ruby-full
+        - ruby-bundler
+        - build-essential
+
+    - name: Check Ruby and Bundler
+      shell: ruby -v; bundler -v
