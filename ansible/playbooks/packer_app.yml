@@ -14,3 +14,4 @@
 
     - name: Check Ruby and Bundler
       shell: ruby -v; bundler -v
+      changed_when: false

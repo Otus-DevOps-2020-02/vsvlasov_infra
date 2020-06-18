@@ -1,4 +1,4 @@
-# vsvlasov_infra
+# vsvlasov_infra [![Build Status](https://travis-ci.com/Otus-DevOps-2020-02/vsvlasov_infra.svg?branch=master)](https://travis-ci.com/Otus-DevOps-2020-02/vsvlasov_infra)
 vsvlasov Infra repository
 
 # ДЗ-3 "Знакомство с облачной инфраструктурой"
@@ -142,3 +142,14 @@ appserver                  : ok=2    changed=1    unreachable=0    failed=0    s
 Добавлен Ansible provisioning для Packer
 
 Обновлен inventory.py, добавлен internal ip
+
+# ДЗ-10 "Ansible: работа с ролями и окружениями"
+
+- Добавлены Ansible роли для App и DB с использованием ansible-galaxy для базовой структуры
+- Добавлены Ansible environments для stage и prod окружений
+- Переиспользован динамический inventory.py для окружений
+- Обновлена структура проекта Ansible
+- Использована Community роль jdauphant.nginx для Nginx reverse proxy
+- Обновлена конфигурация Terraform, теперь приложение доступно на 80 порту вместо 9292
+- Применен Ansible Vault для хранения паролей пользователей
+- Добавлена валидация шаблонов Terraform, Ansible, Packer на Travis
